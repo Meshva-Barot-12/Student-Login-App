@@ -1,0 +1,6 @@
+# Project metadata is intentionally minimal; run `flutter create . --platforms=android,web`
+# once on the target machine to generate current platform-specific scaffolding.
+version:
+  revision: unknown
+  channel: stable
+project_type: app

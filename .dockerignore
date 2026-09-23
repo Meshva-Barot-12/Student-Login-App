@@ -1,0 +1,8 @@
+.dart_tool/
+build/
+.pub-cache/
+.git/
+.idea/
+.vscode/
+android/.gradle/
+android/app/build/

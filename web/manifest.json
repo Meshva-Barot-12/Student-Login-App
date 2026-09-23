@@ -1,0 +1,11 @@
+{
+  "name": "Student Login App",
+  "short_name": "Student Login",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F5F7FB",
+  "theme_color": "#3559E0",
+  "description": "Flutter Login and Registration Application",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
+}
