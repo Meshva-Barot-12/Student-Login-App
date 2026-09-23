@@ -15,6 +15,7 @@
 A modern, responsive, and secure Student Authentication & Dashboard application built with **Flutter**, featuring real-time form validation, multi-gesture interactions, state management, a companion pure-Dart CLI console, and Dockerized web deployment.
 
 **Developer:** Meshva Barot ([@Meshva-Barot-12](https://github.com/Meshva-Barot-12))  
+**Repository:** [Meshva-Barot-12/Student-Login-App](https://github.com/Meshva-Barot-12/Student-Login-App)  
 **License:** Proprietary — All Rights Reserved  
 **Status:** Production Ready  
 
@@ -54,7 +55,7 @@ A modern, responsive, and secure Student Authentication & Dashboard application 
 ## Project Structure
 
 ```text
-student_login_app_M/
+Student-Login-App/
 ├── lib/
 │   ├── core/
 │   │   └── validators.dart            # Validation logic for all form fields

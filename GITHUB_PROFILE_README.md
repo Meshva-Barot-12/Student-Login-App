@@ -32,7 +32,7 @@ Passionate Software Developer specializing in **Cross-Platform Mobile Applicatio
 
 ### 🚀 Featured Project
 
-#### 🎓 [Student Portal & Authentication Application](https://github.com/Meshva-Barot-12/student_login_app)
+#### 🎓 [Student Portal & Authentication Application](https://github.com/Meshva-Barot-12/Student-Login-App)
 > A modern, multi-gesture student authentication and dashboard portal featuring real-time form validation, live dynamic password complexity meters, responsive layouts, standalone pure-Dart CLI, and Dockerized web containerization.
 
 - **Stack:** Flutter, Dart, Material 3, Docker, Nginx
