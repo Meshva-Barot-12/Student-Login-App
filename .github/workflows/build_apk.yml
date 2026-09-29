@@ -50,10 +50,17 @@ jobs:
           BUILD_STATUS=$?
           echo "=== BUILD STATUS: $BUILD_STATUS ==="
           if [ $BUILD_STATUS -ne 0 ]; then
-            echo "## ❌ Android Build Error Summary" >> $GITHUB_STEP_SUMMARY
-            echo '```text' >> $GITHUB_STEP_SUMMARY
-            tail -n 60 build_output.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "=== LAST 80 LINES OF BUILD LOG ==="
+            tail -n 80 build_output.log
+            echo "=== CHECKING IF ANY APK WAS CREATED ==="
+            find build/ -name "*.apk" -ls || true
+            git config user.name "github-actions"
+            git config user.email "github-actions@github.com"
+            git checkout -B build-log
+            tail -n 120 build_output.log > BUILD_ERROR.txt
+            git add BUILD_ERROR.txt
+            git commit -m "ci: save build error log" || true
+            git push -f origin build-log || true
             exit $BUILD_STATUS
           fi
 
