@@ -31,7 +31,7 @@ jobs:
 
       - name: Scaffold Android Platform Files
         run: |
-          flutter create . --platforms=android --org com.silveroak.studentlogin
+          flutter create --project-name student_login_app --platforms=android --org com.silveroak.studentlogin .
           flutter pub get
 
       - name: Run Flutter Tests
