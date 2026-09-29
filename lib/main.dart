@@ -48,7 +48,7 @@ class _StudentLoginAppState extends State<StudentLoginApp> {
           errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Colors.redAccent)),
           focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Colors.redAccent, width: 1.5)),
         ),
-        cardTheme: CardThemeData(
+        cardTheme: CardTheme(
           elevation: 6,
           shadowColor: Colors.black12,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),

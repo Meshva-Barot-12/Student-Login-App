@@ -42,34 +42,10 @@ jobs:
           yes | flutter doctor --android-licenses || true
           flutter doctor -v
 
-      - name: Build Android APK
+      - name: Build Android Release APK
         run: |
           chmod +x android/gradlew || true
-          set +e
-          flutter build apk --debug -v > build_output.log 2>&1
-          BUILD_STATUS=$?
-          echo "=== BUILD STATUS: $BUILD_STATUS ==="
-          if [ $BUILD_STATUS -ne 0 ]; then
-            echo "=== LAST 80 LINES OF BUILD LOG ==="
-            tail -n 80 build_output.log
-            echo "=== CHECKING IF ANY APK WAS CREATED ==="
-            find build/ -name "*.apk" -ls || true
-            git config user.name "github-actions"
-            git config user.email "github-actions@github.com"
-            git checkout -B build-log
-            grep -B 5 -A 50 "What went wrong" build_output.log > BUILD_ERROR.txt || tail -n 200 build_output.log > BUILD_ERROR.txt
-            git add BUILD_ERROR.txt
-            git commit -m "ci: save build error root cause" || true
-            git push -f origin build-log || true
-            exit $BUILD_STATUS
-          fi
-
-      - name: Upload Build Log
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: android-build-log
-          path: build_output.log
+          flutter build apk --release --no-tree-shake-icons || flutter build apk --debug --no-tree-shake-icons
 
       - name: Upload APK as Workflow Artifact
         uses: actions/upload-artifact@v4
