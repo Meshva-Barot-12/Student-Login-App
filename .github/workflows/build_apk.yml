@@ -44,17 +44,25 @@ jobs:
 
       - name: Build Android APK
         run: |
+          chmod +x android/gradlew || true
           set +e
           flutter build apk --debug -v > build_output.log 2>&1
           BUILD_STATUS=$?
           echo "=== BUILD STATUS: $BUILD_STATUS ==="
           if [ $BUILD_STATUS -ne 0 ]; then
-            echo "=== LAST 120 LINES OF BUILD LOG ==="
-            tail -n 120 build_output.log
-            echo "=== FILTERED ERRORS ==="
-            grep -i -C 3 "error" build_output.log | head -n 60 || true
+            echo "## ❌ Android Build Error Summary" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            tail -n 60 build_output.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
             exit $BUILD_STATUS
           fi
+
+      - name: Upload Build Log
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-build-log
+          path: build_output.log
 
       - name: Upload APK as Workflow Artifact
         uses: actions/upload-artifact@v4
