@@ -57,9 +57,9 @@ jobs:
             git config user.name "github-actions"
             git config user.email "github-actions@github.com"
             git checkout -B build-log
-            tail -n 120 build_output.log > BUILD_ERROR.txt
+            grep -B 5 -A 50 "What went wrong" build_output.log > BUILD_ERROR.txt || tail -n 200 build_output.log > BUILD_ERROR.txt
             git add BUILD_ERROR.txt
-            git commit -m "ci: save build error log" || true
+            git commit -m "ci: save build error root cause" || true
             git push -f origin build-log || true
             exit $BUILD_STATUS
           fi
